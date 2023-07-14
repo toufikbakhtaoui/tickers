@@ -49,6 +49,6 @@ public class PortfolioController {
     public ResponseEntity<String> deletePortfolio(@PathVariable("id") UUID id) {
         portfolioService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                .body("User deleted successfully");
+                .body("Portfolio deleted successfully");
     }
 }

@@ -4,7 +4,6 @@ import com.solyador.tickers.portfolio.domain.Portfolio;
 import com.solyador.tickers.portfolio.dto.PortfolioDto;
 import org.springframework.stereotype.Component;
 
-@Component
 public class PortfolioMapper {
 
     private PortfolioMapper() {

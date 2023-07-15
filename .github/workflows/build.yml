@@ -30,7 +30,7 @@ jobs:
         with:
           java-version: "20"
       - name: Analyze with SonarCloud
-        run: ./mvnw -B verify sonar:sonar -Dsonar.projectKey=toufikbakhtaoui_tickers
+        run: ./mvnw -B -Pcoverage verify sonar:sonar -Dsonar.projectKey=toufikbakhtaoui_tickers
           -Dsonar.organization=solyador -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.login=$SONAR_TOKEN
         env:

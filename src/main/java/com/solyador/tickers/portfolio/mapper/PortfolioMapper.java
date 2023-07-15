@@ -11,6 +11,7 @@ public class PortfolioMapper {
     }
     public static PortfolioDto portfolioToDto(Portfolio portfolio) {
         return PortfolioDto.builder()
+                .id(portfolio.getId())
                 .name(portfolio.getName())
                 .description(portfolio.getDescription())
                 .build();

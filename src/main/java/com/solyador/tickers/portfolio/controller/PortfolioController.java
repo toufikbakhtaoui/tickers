@@ -48,7 +48,6 @@ public class PortfolioController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletePortfolio(@PathVariable("id") UUID id) {
         portfolioService.delete(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT)
-                .body("Portfolio deleted successfully");
+        return ResponseEntity.status(HttpStatus.OK).body("Portfolio with ID " + id + " is deleted.");
     }
 }

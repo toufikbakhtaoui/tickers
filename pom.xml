@@ -83,6 +83,38 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.10</version>
+                <configuration>
+                    <excludes>
+                    <!-- Exclude specific package(s) -->
+                    <exclude>com/solyador/tickers/shared/domain/**</exclude>
+                    <exclude>com/solyador/tickers/portfolio/domain/**</exclude>
+                    <exclude>com/solyador/tickers/portfolio/repository/**</exclude>
+                    <exclude>com/solyador/tickers/portfolio/dto/**</exclude>
+                    <!-- Exclude specific folder(s) -->
+                    <exclude>**/test/**</exclude>
+                    <exclude>**/resources/**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>

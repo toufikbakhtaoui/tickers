@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class PortfolioControllerIntegrationTests {
 
     private final String PORTFOLIO_BASE_URL = "/api/v1/portfolios";
+    private static final String BASE_URL = "http://localhost:";
 
     @LocalServerPort
     private int port;
@@ -38,13 +39,13 @@ class PortfolioControllerIntegrationTests {
 
     @Test
     @Sql(scripts = {"/clean.sql", "/data.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-    void testAllPortfolios() {
+    void testFindAllPortfolios() {
         //given
         var portfolios = portfolioRepository.findAll();
         assertEquals(2, portfolios.size());
 
         //when
-        var response = this.restTemplate.exchange("http://localhost:" + port + PORTFOLIO_BASE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<PortfolioDto>>() {});
+        var response = this.restTemplate.exchange( BASE_URL + port + PORTFOLIO_BASE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<List<PortfolioDto>>() {});
 
         //then
         assertNotNull(response);
@@ -63,7 +64,7 @@ class PortfolioControllerIntegrationTests {
 
         //when
         ResponseEntity<PortfolioDto> responseEntity = this.restTemplate
-                .postForEntity("http://localhost:" + port + PORTFOLIO_BASE_URL, portfolioDto, PortfolioDto.class);
+                .postForEntity(BASE_URL + port + PORTFOLIO_BASE_URL, portfolioDto, PortfolioDto.class);
 
         //then
         assertEquals(201, responseEntity.getStatusCode().value());
@@ -83,7 +84,7 @@ class PortfolioControllerIntegrationTests {
 
         //when
         ResponseEntity<String> responseEntity = this.restTemplate
-                .exchange("http://localhost:" + port + PORTFOLIO_BASE_URL + "/" + portfolioId, HttpMethod.DELETE, null, String.class);
+                .exchange(BASE_URL + port + PORTFOLIO_BASE_URL + "/" + portfolioId, HttpMethod.DELETE, null, String.class);
 
         //then
         assertNotNull(responseEntity);
@@ -105,7 +106,7 @@ class PortfolioControllerIntegrationTests {
 
         //when
         ResponseEntity<PortfolioDto> responseEntity = this.restTemplate
-                .exchange("http://localhost:" + port + PORTFOLIO_BASE_URL, HttpMethod.PUT, requestEntity, PortfolioDto.class);
+                .exchange(BASE_URL + port + PORTFOLIO_BASE_URL, HttpMethod.PUT, requestEntity, PortfolioDto.class);
 
         //then
         assertNotNull(responseEntity);

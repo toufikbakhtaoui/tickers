@@ -14,7 +14,7 @@
     <name>tickers</name>
     <description>a stock portfolio aggregator</description>
     <properties>
-        <java.version>20</java.version>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -91,6 +91,7 @@
                     <excludes>
                     <!-- Exclude specific package(s) -->
                     <exclude>com/solyador/tickers/shared/domain/**</exclude>
+                    <exclude>com/solyador/tickers/shared/exception/**</exclude>
                     <exclude>com/solyador/tickers/portfolio/domain/**</exclude>
                     <exclude>com/solyador/tickers/portfolio/repository/**</exclude>
                     <exclude>com/solyador/tickers/portfolio/dto/**</exclude>
